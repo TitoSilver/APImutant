@@ -10,7 +10,7 @@ Este proyecto ayuda a Magneto a detectar mutantes, validando el ADN de personas.
 
 ## Estructura del Projecto
 
-![project-structure](docs/project_structure.png)
+![project_structure](docs/project_structure.png)
 
 ## Tecnologias Usadas
 
@@ -39,6 +39,7 @@ python -m venv env
 ```
 
 - acceder al env:
+
 **_NOTE_** en Windows:
 ```bash
 env/Script/activate
@@ -60,17 +61,18 @@ python -m src.app
 ```
 
 -se visualiza todos los endpoints a traves de:
-    - http://localhost:8000/docs
+
+http://localhost:8000/docs
 
 ## TEST
 
 **_NOTE:_**  tener en cuenta si en la consola detecta el alias python, existen exepciones como:
 - python
--python3
--py
--py3
+- python3
+- py
+- py3
 
-**_NOTE:_** validar usando el <alias> --version
+**_NOTE:_** validar usando el 'alias de python' --version
 
 ```bash
 python -m unittest test.unit.test_mutants
