@@ -10,8 +10,8 @@ class Mutant():
     is_mutant: bool
 
     def __init__(self,dna) -> None:
-        self.id_ = ''.join(row for row in dna["dna"])
-        self.dna = dna['dna']
+        self.id_ = ''.join(row for row in dna)
+        self.dna = dna
         self.is_mutant = self.has_mutant()
 
     def has_mutant(self) -> bool:
@@ -73,7 +73,7 @@ class Mutant():
 
     def check_mutation(self, sub_string: str) -> int:
         '''
-        Se utilizo Rabin-Karp string matching
+        The Rabin-Karp string matching algorithm was used. 
         '''
         count_mutations = 0
         set_hashes = set(hash(char_*4) for char_ in ('A','T','C','G'))
