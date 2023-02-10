@@ -5,17 +5,17 @@ from fastapi.responses import JSONResponse
 from fastapi.requests import Request
 
 from src.mutants.domain.mutant import Mutant
-from src.mutants.infrastructure.validate_dna import has_number
+from src.mutants.infrastructure.validate_dna import has_number, has_matrix
 from src.building_blocks.errors import APIErrorMessage
 
 router = APIRouter()
 
 @router.post("/mutant",
              responses={400: {"model": APIErrorMessage}, 500: {"model": APIErrorMessage}})
-async def validate_mutant(request: Request, dna: List[str]) -> JSONResponse:
+async def validate_mutant(request: Request, dna: dict[str,List[str]]) -> JSONResponse:
     #VALIDADOR QUE DNA SEA ARRAY DE STR
-    if not isinstance(dna,list) or has_number(dna):
-        return JSONResponse(content={'msg':'Oops!, value is not a valid list', 'type': 'type_error.list'}, status_code=status.HTTP_400_BAD_REQUEST)
+    if not isinstance(dna,dict) or has_number(dna['dna']) or not has_matrix(dna['dna']):
+        return JSONResponse(content={'msg':'Oops!, value is not a valid list'}, status_code=status.HTTP_400_BAD_REQUEST)
     mutant = Mutant(dna)
     if not request.app.collection.find_one(mutant.id_):
         request.app.collection.insert_one(mutant)

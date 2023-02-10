@@ -1,8 +1,6 @@
-import numpy as np
-from typing import List, Optional
+from typing import List
 
-from fastapi import APIRouter, Depends, status
-from fastapi.responses import JSONResponse, Response
+import numpy as np
 
 class Mutant():
     id_ : str
@@ -10,8 +8,8 @@ class Mutant():
     is_mutant: bool
 
     def __init__(self,dna) -> None:
-        self.id_ = ''.join(row for row in dna)
-        self.dna = dna
+        self.id_ = ''.join(row for row in dna['dna'])
+        self.dna = dna['dna']
         self.is_mutant = self.has_mutant()
 
     def has_mutant(self) -> bool:
