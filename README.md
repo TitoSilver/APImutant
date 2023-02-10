@@ -55,7 +55,7 @@ source env/bin/activate
 pip install -r requirements.txt
 ```
 
--correr la aplicacion:
+-correr la aplicacion en el root del repositorio:
 ```bash
 python -m src.app
 ```
